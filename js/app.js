@@ -189,7 +189,9 @@
     detenerCarruselAutomatico();
     if ((DATOS.fotos || []).length < 2) return;
     carruselTimer = setInterval(() => {
-      if (document.hidden || !$("#lightbox")?.hidden) return;
+      const invitacion = $("#invitacion");
+      const lightbox = $("#lightbox");
+      if (document.hidden || !invitacion?.classList.contains("visible") || !lightbox?.hidden) return;
       irAFotoCarrusel(carruselActual + 1);
     }, 4800);
   }
