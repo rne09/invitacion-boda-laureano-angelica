@@ -1,33 +1,25 @@
-# Invitacion web - Boda Laureano & Angelica
+# Invitación web - Boda Mateo & Carol
 
-Invitacion estatica basada en la estructura de la tarjeta de Julian:
-portada con foto grande, boton para abrir carta, musica, cuenta regresiva,
-lugares, codigo de vestimenta, minuto a minuto, galeria, lluvia de sobres y
-confirmacion por WhatsApp.
+Invitación estática basada en la estructura de la tarjeta de Julián, adaptada a una boda con estética editorial y papelería premium beige/dorada.
 
-## Como verla
+Incluye:
 
-Abrir directamente:
+- Portada con foto grande de la pareja.
+- Botón/sobre animado para abrir la invitación.
+- Sello con iniciales `M & C`.
+- Música al abrir.
+- Textura de papel opalina beige.
+- Cuenta regresiva.
+- Ceremonia y recepción.
+- Código de vestimenta.
+- Minuto a minuto.
+- Galería adaptable a cualquier cantidad de fotos.
+- Lluvia de sobres.
+- Confirmación por WhatsApp cuando se configure el número.
 
-```text
-G:\invitacion-boda-laureano-angelica\index.html
-```
+## Datos principales
 
-O con servidor local:
-
-```powershell
-python -m http.server 5598 --bind 127.0.0.1 --directory G:\invitacion-boda-laureano-angelica
-```
-
-Luego abrir:
-
-```text
-http://127.0.0.1:5598
-```
-
-## Donde editar
-
-La informacion principal esta en:
+La información editable está en:
 
 ```text
 js/datos.js
@@ -43,11 +35,12 @@ Campos clave:
 - `timeline`
 - `fraseRegalos`
 - `whatsapp`
+- `fotos`
 - `musica`
 
 ## Fotos
 
-Por ahora usa fotos provisionales de la sesion anterior:
+Actualmente usa fotos provisionales:
 
 ```text
 assets/portada-pareja-web.jpg
@@ -56,22 +49,34 @@ assets/foto-2-web.jpg
 assets/foto-3-web.jpg
 ```
 
-Cuando tomes las fotos nuevas, reemplaza esos archivos manteniendo los mismos
-nombres para que la tarjeta se actualice sin tocar codigo.
+Cuando estén las fotos nuevas de la sesión, se puede reemplazar la portada y agregar todas las fotos deseadas al arreglo `fotos` de `js/datos.js`.
 
-## Musica
+## Textura
 
-Ahora esta puesta la misma musica provisional de la tarjeta baby shower:
+La papelería usa:
+
+```text
+assets/papel-opalina.jpg
+```
+
+Está conectada directamente desde `css/estilos.css` en el fondo exterior, la hoja interior, el botón/sobre y el control de música.
+
+## Música
+
+La música actual sigue siendo provisional:
 
 ```text
 assets/musica.mp3
 ```
 
-La cancion final indicada es:
+La canción final indicada es:
 
 ```text
 Como enamoraban antes - Fonseca
 ```
 
-Cuando tengas el MP3 final, reemplaza `assets/musica.mp3` por ese archivo con el
-mismo nombre.
+Cuando esté disponible el archivo final autorizado, reemplazar `assets/musica.mp3` conservando el mismo nombre.
+
+## WhatsApp
+
+Mientras `whatsapp` esté vacío en `js/datos.js`, la sección de confirmación permanece oculta. Al agregar el número con código de país, aparecerá automáticamente.
