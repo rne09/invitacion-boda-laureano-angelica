@@ -27,11 +27,16 @@
 
     const wa = $("#btnWhatsapp");
     const nombreInvitado = $("#nombreInvitado");
+    const bloqueConfirmar = $(".bloque--confirmar");
     const num = (DATOS.whatsapp || "").replace(/\D/g, "");
+
     if (!wa || !num) {
       if (wa) wa.hidden = true;
+      if (bloqueConfirmar) bloqueConfirmar.hidden = true;
       return;
     }
+
+    if (bloqueConfirmar) bloqueConfirmar.hidden = false;
 
     const actualizar = () => {
       const nombre = nombreInvitado ? nombreInvitado.value.trim() : "";
@@ -47,11 +52,13 @@
         const guardado = localStorage.getItem("bodaNombreInvitado");
         if (guardado) nombreInvitado.value = guardado;
       } catch (e) {}
+
       nombreInvitado.addEventListener("input", () => {
         try { localStorage.setItem("bodaNombreInvitado", nombreInvitado.value.trim()); } catch (e) {}
         actualizar();
       });
     }
+
     actualizar();
   }
 
@@ -71,14 +78,17 @@
     const cont = $("#galeria");
     if (!cont) return;
     cont.innerHTML = "";
+
     (DATOS.fotos || []).forEach((src, i) => {
       const img = document.createElement("img");
       img.src = src;
-      img.alt = "";
-      img.loading = "lazy";
-      img.className = `galeria__foto galeria__foto--${i + 1}`;
+      img.alt = `Foto ${i + 1} de Mateo y Carol`;
+      img.loading = i === 0 ? "eager" : "lazy";
+      img.decoding = "async";
+      img.className = "galeria__foto";
       cont.appendChild(img);
     });
+
     if (!cont.children.length) cont.closest(".bloque").hidden = true;
   }
 
@@ -91,6 +101,7 @@
       if (controlMus) controlMus.hidden = true;
       return;
     }
+
     audio.src = DATOS.musica;
     audio.volume = Math.max(0, Math.min(1, Number(DATOS.volumenInicial ?? 0.5)));
     audio.addEventListener("error", () => { if (controlMus) controlMus.hidden = true; });
@@ -100,8 +111,10 @@
   }
 
   function marcarMusica(sonando) {
+    if (!btnMus) return;
     btnMus.classList.toggle("sonando", sonando);
-    btnMus.querySelector(".btn-musica__txt").textContent = sonando ? "Pause" : "Play";
+    const texto = btnMus.querySelector(".btn-musica__txt");
+    if (texto) texto.textContent = sonando ? "Pause" : "Play";
     btnMus.setAttribute("aria-label", sonando ? "Pausar música" : "Reproducir música");
   }
 
@@ -146,16 +159,17 @@
     const invitacion = $("#invitacion");
     const abrir = $("#abrirSobre");
     const volver = $("#btnVolverPortada");
-    if (!portada || !invitacion) return;
-    let abierta = false;
+    if (!portada || !invitacion || !abrir) return;
 
+    let abierta = false;
     document.body.classList.add("bloqueado");
 
     function mostrar() {
       if (abierta) return;
       abierta = true;
-      abrir?.classList.add("abierto");
+      abrir.classList.add("abierto");
       reproducir();
+
       setTimeout(() => portada.classList.add("se-va"), 650);
       setTimeout(() => {
         portada.hidden = true;
@@ -173,18 +187,12 @@
       portada.classList.remove("se-va");
       invitacion.classList.remove("visible");
       invitacion.setAttribute("aria-hidden", "true");
-      abrir?.classList.remove("abierto");
+      abrir.classList.remove("abierto");
       document.body.classList.add("bloqueado");
       window.scrollTo(0, 0);
     }
 
-    portada.addEventListener("click", mostrar);
-    portada.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        mostrar();
-      }
-    });
+    abrir.addEventListener("click", mostrar);
     volver?.addEventListener("click", regresar);
   }
 
@@ -194,6 +202,7 @@
       bloques.forEach((b) => b.classList.add("dentro"));
       return;
     }
+
     const obs = new IntersectionObserver((entradas) => {
       entradas.forEach((e) => {
         if (e.isIntersecting) {
@@ -202,6 +211,7 @@
         }
       });
     }, { threshold: 0.01, rootMargin: "0px 0px 18% 0px" });
+
     bloques.forEach((b) => obs.observe(b));
   }
 
