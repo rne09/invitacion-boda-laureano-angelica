@@ -1,20 +1,21 @@
-# LEEME - Boda Laureano & Angelica
+# LEEME - Boda Mateo & Carol
 
-Esta carpeta es la version inicial de la invitacion de boda.
-
-La estructura viene de la invitacion de Julian, pero ya esta adaptada a boda:
+Esta es la invitación web de boda de Mateo y Carol.
 
 - Portada con foto grande.
-- Boton tipo carta/sobre para abrir.
-- Musica al tocar la portada.
+- Botón/sobre animado para abrir.
+- Sello `M & C`.
+- Textura beige tipo papel opalina premium.
+- Música al abrir.
 - Cuenta regresiva.
-- Ceremonia y recepcion.
-- Codigo de vestimenta.
+- Ceremonia y recepción.
+- Código de vestimenta.
 - Minuto a minuto.
-- Galeria de fotos.
-- Sugerencia de regalos: lluvia de sobres.
+- Galería flexible para agregar más fotos.
+- Lluvia de sobres.
+- Confirmación por WhatsApp cuando se agregue el número.
 
-## Para cambiar datos
+## Cambiar datos
 
 Edita:
 
@@ -22,26 +23,33 @@ Edita:
 js/datos.js
 ```
 
-## Para cambiar fotos
+## Cambiar o agregar fotos
 
-Reemplaza estos archivos:
+Portada actual:
 
 ```text
 assets/portada-pareja-web.jpg
+```
+
+Galería actual:
+
+```text
 assets/foto-1-web.jpg
 assets/foto-2-web.jpg
 assets/foto-3-web.jpg
 ```
 
-## Para cambiar musica
+Para agregar más fotos, súbelas a `assets/` y añade sus rutas al arreglo `fotos` en `js/datos.js`.
 
-Reemplaza:
+## Música
+
+Archivo actual:
 
 ```text
 assets/musica.mp3
 ```
 
-La cancion final solicitada es:
+La canción final indicada es:
 
 ```text
 Como enamoraban antes - Fonseca
