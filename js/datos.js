@@ -4,10 +4,10 @@
    ========================================================================== */
 
 const DATOS = {
-  novio: "Laureano",
-  novia: "Angélica",
+  novio: "Mateo",
+  novia: "Carol",
   evento: "Boda",
-  selloInicial: "L & A",
+  selloInicial: "M & C",
 
   fechaISO: "2026-10-31T15:00",
   diaSemana: "Sábado",
@@ -28,8 +28,9 @@ const DATOS = {
   dressCodeTitulo: "Formal",
   dressCodeNota: "Mujeres: vestido largo, unicolor.\nHombres: camisa manga larga y pantalón.",
 
+  /* Agrega aqui el numero con codigo de pais cuando lo tengas. Ejemplo Colombia: 573001234567 */
   whatsapp: "",
-  whatsappMensaje: "Hola, soy {nombre} y confirmo mi asistencia a la boda de Laureano y Angélica.",
+  whatsappMensaje: "Hola, soy {nombre} y confirmo mi asistencia a la boda de Mateo y Carol.",
 
   fraseIntro: "Tenemos el honor de invitarte a celebrar el inicio de nuestra vida juntos. Tu presencia hará parte de un día que guardaremos para siempre.",
   fraseConfirmar: "Agradecemos confirmar tu asistencia para preparar cada detalle con mucho cariño.",
@@ -46,6 +47,7 @@ const DATOS = {
     ["9:30 PM", "Apertura de pista de baile"]
   ],
 
+  /* Puedes agregar todas las fotos que quieras a este arreglo. */
   fotos: [
     "assets/foto-1-web.jpg",
     "assets/foto-2-web.jpg",
