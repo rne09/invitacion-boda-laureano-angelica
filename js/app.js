@@ -15,7 +15,6 @@
       el.hidden = false;
       el.textContent = valor;
     });
-
     document.title = `${DATOS.evento || "Invitación"} - ${DATOS.novio || ""} & ${DATOS.novia || ""}`;
   }
 
@@ -52,13 +51,11 @@
         const guardado = localStorage.getItem("bodaNombreInvitado");
         if (guardado) nombreInvitado.value = guardado;
       } catch (e) {}
-
       nombreInvitado.addEventListener("input", () => {
         try { localStorage.setItem("bodaNombreInvitado", nombreInvitado.value.trim()); } catch (e) {}
         actualizar();
       });
     }
-
     actualizar();
   }
 
@@ -74,22 +71,200 @@
     });
   }
 
+  let fotoActual = 0;
+  let carruselActual = 0;
+  let carruselTimer = null;
+
   function pintarGaleria() {
     const cont = $("#galeria");
+    const puntos = $("#carruselPuntos");
     if (!cont) return;
     cont.innerHTML = "";
+    if (puntos) puntos.innerHTML = "";
 
-    (DATOS.fotos || []).forEach((src, i) => {
+    const fotos = DATOS.fotos || [];
+    fotos.forEach((src, i) => {
+      const item = document.createElement("button");
+      item.type = "button";
+      item.className = "carrusel__item";
+      item.setAttribute("aria-label", `Ver foto ${i + 1} de Mateo y Carol en grande`);
+
       const img = document.createElement("img");
       img.src = src;
       img.alt = `Foto ${i + 1} de Mateo y Carol`;
       img.loading = i === 0 ? "eager" : "lazy";
       img.decoding = "async";
       img.className = "galeria__foto";
-      cont.appendChild(img);
+      img.addEventListener("load", () => {
+        const vertical = img.naturalHeight > img.naturalWidth;
+        item.classList.toggle("es-vertical", vertical);
+        item.classList.toggle("es-horizontal", !vertical);
+      });
+
+      item.appendChild(img);
+      item.addEventListener("click", () => abrirLightbox(i));
+      cont.appendChild(item);
+
+      if (puntos) {
+        const punto = document.createElement("button");
+        punto.type = "button";
+        punto.className = "carrusel-punto";
+        punto.setAttribute("aria-label", `Ir a foto ${i + 1}`);
+        punto.addEventListener("click", () => irAFotoCarrusel(i, true));
+        puntos.appendChild(punto);
+      }
     });
 
-    if (!cont.children.length) cont.closest(".bloque").hidden = true;
+    if (!fotos.length) {
+      const bloque = cont.closest(".bloque");
+      if (bloque) bloque.hidden = true;
+      return;
+    }
+
+    actualizarPuntos(0);
+    prepararCarrusel();
+    prepararLightbox();
+  }
+
+  function actualizarPuntos(indice) {
+    $$(".carrusel-punto").forEach((punto, i) => {
+      punto.classList.toggle("activo", i === indice);
+    });
+  }
+
+  function irAFotoCarrusel(indice, reiniciar = false) {
+    const cont = $("#galeria");
+    const items = $$("#galeria .carrusel__item");
+    if (!cont || !items.length) return;
+    const total = items.length;
+    carruselActual = (indice + total) % total;
+    const item = items[carruselActual];
+    const izquierda = item.offsetLeft - Math.max(0, (cont.clientWidth - item.clientWidth) / 2);
+    cont.scrollTo({ left: izquierda, behavior: "smooth" });
+    actualizarPuntos(carruselActual);
+    if (reiniciar) reiniciarCarruselAutomatico();
+  }
+
+  function prepararCarrusel() {
+    const cont = $("#galeria");
+    const prev = $("#prevFoto");
+    const next = $("#nextFoto");
+    const items = $$("#galeria .carrusel__item");
+    if (!cont || !items.length) return;
+
+    prev?.addEventListener("click", () => irAFotoCarrusel(carruselActual - 1, true));
+    next?.addEventListener("click", () => irAFotoCarrusel(carruselActual + 1, true));
+
+    let rafPendiente = false;
+    cont.addEventListener("scroll", () => {
+      if (rafPendiente) return;
+      rafPendiente = true;
+      requestAnimationFrame(() => {
+        rafPendiente = false;
+        const centro = cont.scrollLeft + cont.clientWidth / 2;
+        let mejor = 0;
+        let distancia = Infinity;
+        items.forEach((item, i) => {
+          const centroItem = item.offsetLeft + item.clientWidth / 2;
+          const d = Math.abs(centro - centroItem);
+          if (d < distancia) {
+            distancia = d;
+            mejor = i;
+          }
+        });
+        carruselActual = mejor;
+        actualizarPuntos(mejor);
+      });
+    }, { passive: true });
+
+    ["pointerdown", "touchstart", "wheel"].forEach((evento) => {
+      cont.addEventListener(evento, reiniciarCarruselAutomatico, { passive: true });
+    });
+
+    window.addEventListener("resize", () => irAFotoCarrusel(carruselActual));
+    iniciarCarruselAutomatico();
+  }
+
+  function iniciarCarruselAutomatico() {
+    detenerCarruselAutomatico();
+    if ((DATOS.fotos || []).length < 2) return;
+    carruselTimer = setInterval(() => {
+      if (document.hidden || !$("#lightbox")?.hidden) return;
+      irAFotoCarrusel(carruselActual + 1);
+    }, 4800);
+  }
+
+  function detenerCarruselAutomatico() {
+    if (carruselTimer) {
+      clearInterval(carruselTimer);
+      carruselTimer = null;
+    }
+  }
+
+  function reiniciarCarruselAutomatico() {
+    iniciarCarruselAutomatico();
+  }
+
+  function prepararLightbox() {
+    const lightbox = $("#lightbox");
+    const fondo = $("#lightboxFondo");
+    const cerrar = $("#cerrarLightbox");
+    const prev = $("#lbPrev");
+    const next = $("#lbNext");
+    if (!lightbox) return;
+
+    fondo?.addEventListener("click", cerrarLightbox);
+    cerrar?.addEventListener("click", cerrarLightbox);
+    prev?.addEventListener("click", () => cambiarFotoLightbox(-1));
+    next?.addEventListener("click", () => cambiarFotoLightbox(1));
+
+    let inicioX = null;
+    lightbox.addEventListener("touchstart", (e) => {
+      inicioX = e.changedTouches?.[0]?.clientX ?? null;
+    }, { passive: true });
+    lightbox.addEventListener("touchend", (e) => {
+      if (inicioX === null) return;
+      const finX = e.changedTouches?.[0]?.clientX ?? inicioX;
+      const delta = finX - inicioX;
+      inicioX = null;
+      if (Math.abs(delta) > 55) cambiarFotoLightbox(delta > 0 ? -1 : 1);
+    }, { passive: true });
+  }
+
+  function abrirLightbox(indice) {
+    const lightbox = $("#lightbox");
+    if (!lightbox || !(DATOS.fotos || []).length) return;
+    fotoActual = indice;
+    pintarFotoLightbox();
+    lightbox.hidden = false;
+    document.body.classList.add("modal-abierto");
+    detenerCarruselAutomatico();
+    $("#cerrarLightbox")?.focus();
+  }
+
+  function cerrarLightbox() {
+    const lightbox = $("#lightbox");
+    if (!lightbox || lightbox.hidden) return;
+    lightbox.hidden = true;
+    document.body.classList.remove("modal-abierto");
+    iniciarCarruselAutomatico();
+  }
+
+  function cambiarFotoLightbox(paso) {
+    const total = (DATOS.fotos || []).length;
+    if (!total) return;
+    fotoActual = (fotoActual + paso + total) % total;
+    pintarFotoLightbox();
+  }
+
+  function pintarFotoLightbox() {
+    const img = $("#lightboxImg");
+    const contador = $("#lightboxContador");
+    const fotos = DATOS.fotos || [];
+    if (!img || !fotos.length) return;
+    img.src = fotos[fotoActual];
+    img.alt = `Foto ${fotoActual + 1} de Mateo y Carol`;
+    if (contador) contador.textContent = `${fotoActual + 1} / ${fotos.length}`;
   }
 
   const audio = $("#audio");
@@ -101,7 +276,6 @@
       if (controlMus) controlMus.hidden = true;
       return;
     }
-
     audio.src = DATOS.musica;
     audio.volume = Math.max(0, Math.min(1, Number(DATOS.volumenInicial ?? 0.5)));
     audio.addEventListener("error", () => { if (controlMus) controlMus.hidden = true; });
@@ -169,7 +343,6 @@
       abierta = true;
       abrir.classList.add("abierto");
       reproducir();
-
       setTimeout(() => portada.classList.add("se-va"), 650);
       setTimeout(() => {
         portada.hidden = true;
@@ -202,7 +375,6 @@
       bloques.forEach((b) => b.classList.add("dentro"));
       return;
     }
-
     const obs = new IntersectionObserver((entradas) => {
       entradas.forEach((e) => {
         if (e.isIntersecting) {
@@ -211,9 +383,20 @@
         }
       });
     }, { threshold: 0.01, rootMargin: "0px 0px 18% 0px" });
-
     bloques.forEach((b) => obs.observe(b));
   }
+
+  document.addEventListener("keydown", (e) => {
+    const lightbox = $("#lightbox");
+    if (!lightbox || lightbox.hidden) return;
+    if (e.key === "Escape") cerrarLightbox();
+    if (e.key === "ArrowLeft") cambiarFotoLightbox(-1);
+    if (e.key === "ArrowRight") cambiarFotoLightbox(1);
+  });
+
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) reiniciarCarruselAutomatico();
+  });
 
   function paso(nombre, fn) {
     try { fn(); }
