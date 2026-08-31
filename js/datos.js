@@ -64,18 +64,18 @@ const DATOS = {
 (function cargarComplementosBoda() {
   const cssCarrusel = document.createElement("link");
   cssCarrusel.rel = "stylesheet";
-  cssCarrusel.href = "css/carrusel-coverflow.css";
+  cssCarrusel.href = "css/carrusel-coverflow.css?v=5";
   document.head.appendChild(cssCarrusel);
 
   /* Se agrega despues del CSS del carrusel para que la limpieza visual tenga
      prioridad sobre bordes, tamaños e imagenes redundantes. */
   const cssLimpieza = document.createElement("link");
   cssLimpieza.rel = "stylesheet";
-  cssLimpieza.href = "css/limpieza-visual.css";
+  cssLimpieza.href = "css/limpieza-visual.css?v=5";
   document.head.appendChild(cssLimpieza);
 
   const script = document.createElement("script");
-  script.src = "js/carrusel-coverflow.js";
+  script.src = "js/carrusel-coverflow.js?v=5";
   script.async = false;
   document.head.appendChild(script);
 })();
