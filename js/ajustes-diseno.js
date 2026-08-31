@@ -23,6 +23,18 @@
     bloque.dataset.ordenNombres = "1";
   }
 
+  function forzarInicialMateo() {
+    document.querySelectorAll('[data-campo="novio"]').forEach((el) => {
+      const texto = (el.textContent || "").trim();
+      if (!/^mateo$/i.test(texto) && el.dataset.mateoInicial === "1") return;
+      if (!/^mateo$/i.test(texto) && el.dataset.mateoInicial !== "1") return;
+
+      el.innerHTML = '<span class="mateo-inicial" aria-hidden="true">M</span><span class="mateo-resto" aria-hidden="true">ateo</span>';
+      el.setAttribute("aria-label", "Mateo");
+      el.dataset.mateoInicial = "1";
+    });
+  }
+
   function actualizarTextosEstaticos() {
     document.title = "Boda Caroll & Mateo";
 
@@ -46,8 +58,6 @@
   }
 
   function limpiarContenidoGenerado() {
-    /* app.js conserva compatibilidad con la version anterior y crea iconos
-       en el timeline. Los retiramos para que no aparezca ninguna ilustracion floral. */
     document.querySelectorAll(".timeline__icono").forEach((icono) => icono.remove());
 
     document.querySelectorAll("#galeria .carrusel__item").forEach((item, i) => {
@@ -81,14 +91,16 @@
     ordenarNombres(".nombres-interior");
     actualizarTextosEstaticos();
     agregarFotoInterior();
+    forzarInicialMateo();
 
-    /* Se ejecuta tambien en el siguiente frame porque app.js pinta timeline y galeria
-       de forma inmediata al final del documento. */
     limpiarContenidoGenerado();
     requestAnimationFrame(() => {
       actualizarTextosEstaticos();
       limpiarContenidoGenerado();
+      forzarInicialMateo();
     });
+
+    setTimeout(forzarInicialMateo, 80);
   }
 
   if (document.readyState === "loading") {
