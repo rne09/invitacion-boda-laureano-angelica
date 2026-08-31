@@ -60,14 +60,19 @@ const DATOS = {
   volumenInicial: 0.5
 };
 
-/* Mejoras visuales de la galeria. Se cargan aqui para mantener index.html
-   y app.js limpios: app.js conserva toda su logica de flechas, puntos,
-   autoplay, swipe y lightbox. */
-(function cargarCoverflowBoda() {
-  const css = document.createElement("link");
-  css.rel = "stylesheet";
-  css.href = "css/carrusel-coverflow.css";
-  document.head.appendChild(css);
+/* Complementos visuales. app.js conserva la logica principal de la invitacion. */
+(function cargarComplementosBoda() {
+  const cssCarrusel = document.createElement("link");
+  cssCarrusel.rel = "stylesheet";
+  cssCarrusel.href = "css/carrusel-coverflow.css";
+  document.head.appendChild(cssCarrusel);
+
+  /* Se agrega despues del CSS del carrusel para que la limpieza visual tenga
+     prioridad sobre bordes, tamaños e imagenes redundantes. */
+  const cssLimpieza = document.createElement("link");
+  cssLimpieza.rel = "stylesheet";
+  cssLimpieza.href = "css/limpieza-visual.css";
+  document.head.appendChild(cssLimpieza);
 
   const script = document.createElement("script");
   script.src = "js/carrusel-coverflow.js";
