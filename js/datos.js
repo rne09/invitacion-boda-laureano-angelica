@@ -59,3 +59,18 @@ const DATOS = {
   musica: "assets/musica.mp3",
   volumenInicial: 0.5
 };
+
+/* Mejoras visuales de la galeria. Se cargan aqui para mantener index.html
+   y app.js limpios: app.js conserva toda su logica de flechas, puntos,
+   autoplay, swipe y lightbox. */
+(function cargarCoverflowBoda() {
+  const css = document.createElement("link");
+  css.rel = "stylesheet";
+  css.href = "css/carrusel-coverflow.css";
+  document.head.appendChild(css);
+
+  const script = document.createElement("script");
+  script.src = "js/carrusel-coverflow.js";
+  script.async = false;
+  document.head.appendChild(script);
+})();
