@@ -18,21 +18,13 @@
     mateo.classList.add("nombre-mateo");
     amp.classList.add("amp-ajustado");
 
+    /* Mateo queda como texto normal completo para conservar exactamente
+       la misma fuente, tamaño, color y peso visual que Caroll. */
+    mateo.textContent = "Mateo";
+
     bloque.append(caroll, amp, mateo);
     bloque.classList.add("nombres-ordenados");
     bloque.dataset.ordenNombres = "1";
-  }
-
-  function forzarInicialMateo() {
-    document.querySelectorAll('[data-campo="novio"]').forEach((el) => {
-      const texto = (el.textContent || "").trim();
-      if (!/^mateo$/i.test(texto) && el.dataset.mateoInicial === "1") return;
-      if (!/^mateo$/i.test(texto) && el.dataset.mateoInicial !== "1") return;
-
-      el.innerHTML = '<span class="mateo-inicial" aria-hidden="true">M</span><span class="mateo-resto" aria-hidden="true">ateo</span>';
-      el.setAttribute("aria-label", "Mateo");
-      el.dataset.mateoInicial = "1";
-    });
   }
 
   function actualizarTextosEstaticos() {
@@ -91,16 +83,12 @@
     ordenarNombres(".nombres-interior");
     actualizarTextosEstaticos();
     agregarFotoInterior();
-    forzarInicialMateo();
 
     limpiarContenidoGenerado();
     requestAnimationFrame(() => {
       actualizarTextosEstaticos();
       limpiarContenidoGenerado();
-      forzarInicialMateo();
     });
-
-    setTimeout(forzarInicialMateo, 80);
   }
 
   if (document.readyState === "loading") {
