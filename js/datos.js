@@ -28,8 +28,8 @@ const DATOS = {
   dressCodeTitulo: "Formal",
   dressCodeNota: "Mujeres: vestido largo, unicolor.\nHombres: camisa manga larga y pantalón.",
 
-  /* Agrega aqui el numero con codigo de pais cuando lo tengas. Ejemplo Colombia: 573001234567 */
-  whatsapp: "",
+  /* Numero con codigo de pais. Colombia: 57 */
+  whatsapp: "573157888301",
   whatsappMensaje: "Hola, soy {nombre} y confirmo mi asistencia a la boda de Mateo y Carol.",
 
   fraseIntro: "Tenemos el honor de invitarte a celebrar el inicio de nuestra vida juntos. Tu presencia hará parte de un día que guardaremos para siempre.",
