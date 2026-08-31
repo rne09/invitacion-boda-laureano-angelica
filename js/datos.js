@@ -75,8 +75,14 @@ const DATOS = {
 
   const cssAjustes = document.createElement("link");
   cssAjustes.rel = "stylesheet";
-  cssAjustes.href = "css/ajustes-nombres-foto.css?v=4";
+  cssAjustes.href = "css/ajustes-nombres-foto.css?v=5";
   document.head.appendChild(cssAjustes);
+
+  /* Revision final: iguala Caroll/Mateo y usa el sello PNG aprobado. */
+  const cssRevision = document.createElement("link");
+  cssRevision.rel = "stylesheet";
+  cssRevision.href = "css/revision-cliente.css?v=1";
+  document.head.appendChild(cssRevision);
 
   const scriptCarrusel = document.createElement("script");
   scriptCarrusel.src = "js/carrusel-coverflow.js?v=7";
@@ -84,7 +90,7 @@ const DATOS = {
   document.head.appendChild(scriptCarrusel);
 
   const scriptAjustes = document.createElement("script");
-  scriptAjustes.src = "js/ajustes-diseno.js?v=4";
+  scriptAjustes.src = "js/ajustes-diseno.js?v=5";
   scriptAjustes.async = false;
   document.head.appendChild(scriptAjustes);
 })();
