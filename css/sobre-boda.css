@@ -1,0 +1,338 @@
+/* ==========================================================================
+   SOBRE DE APERTURA — MATEO & CAROL
+   Adaptado de la mecanica 3D de la invitacion de Thiago, con estetica de boda.
+   ========================================================================== */
+
+.portada__contenido{
+  width:min(100% - 28px,560px);
+  padding:calc(34px + env(safe-area-inset-top)) 0 calc(22px + env(safe-area-inset-bottom));
+}
+
+.portada__eyebrow{
+  position:relative;
+  padding-bottom:12px;
+  color:#fffaf1;
+  font-size:11px;
+  letter-spacing:.34em;
+}
+.portada__eyebrow::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:0;
+  width:76px;
+  height:1px;
+  transform:translateX(-50%);
+  background:linear-gradient(90deg,transparent,#e9cf98,transparent);
+}
+
+.portada__nombres{
+  margin:auto 0 18px;
+  gap:4px;
+  line-height:.91;
+  text-shadow:0 7px 28px rgba(0,0,0,.52),0 1px 0 rgba(255,255,255,.12);
+}
+.portada__nombres .amp{
+  margin:0;
+  color:#f0d6a3;
+  text-shadow:0 4px 15px rgba(0,0,0,.35);
+}
+
+/* El boton deja de parecer tarjeta: ahora TODO el control es el sobre. */
+.abrir-carta{
+  position:relative;
+  width:min(78vw,300px);
+  height:218px;
+  min-height:0;
+  margin-top:auto;
+  padding:0;
+  border:0;
+  border-radius:0;
+  background:
+    url("../assets/Esquina superior iz flores.png") left -7px top 10px/106px auto no-repeat,
+    url("../assets/Esquina derecha inferior.png") right -9px top 70px/110px auto no-repeat;
+  box-shadow:none;
+  color:#fff8ea;
+  display:block;
+  cursor:pointer;
+  perspective:1200px;
+  overflow:visible;
+  backdrop-filter:none;
+  animation:none;
+  isolation:isolate;
+}
+.abrir-carta:hover{box-shadow:none}
+.abrir-carta:focus-visible{
+  outline:2px solid #efd89f;
+  outline-offset:7px;
+  border-radius:16px;
+}
+
+/* Pulso alrededor del lacre: tomado de la idea del baby shower. */
+.abrir-carta::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:43%;
+  width:66px;
+  height:66px;
+  border:1.5px solid rgba(239,216,159,.92);
+  border-radius:50%;
+  transform:translate(-50%,-50%) scale(.72);
+  box-shadow:0 0 16px rgba(239,216,159,.18);
+  animation:pulso-lacre-boda 1.48s ease-out infinite;
+  z-index:12;
+  pointer-events:none;
+}
+
+.abrir-carta__sobre{
+  position:absolute;
+  left:7%;
+  right:7%;
+  top:10px;
+  width:auto;
+  height:158px;
+  aspect-ratio:auto;
+  filter:drop-shadow(0 16px 18px rgba(20,14,9,.30));
+  transform-style:preserve-3d;
+  animation:sobre-boda-flota 3.2s ease-in-out infinite;
+  z-index:5;
+}
+
+/* Cuerpo del sobre, con textura real de opalina y pliegues laterales. */
+.abrir-carta__sobre::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:5px;
+  background:
+    linear-gradient(32deg,transparent 49.25%,rgba(139,103,49,.27) 49.7%,rgba(139,103,49,.27) 50.3%,transparent 50.75%),
+    linear-gradient(148deg,transparent 49.25%,rgba(139,103,49,.27) 49.7%,rgba(139,103,49,.27) 50.3%,transparent 50.75%),
+    linear-gradient(rgba(255,253,248,.36),rgba(233,215,187,.44)),
+    url("../assets/papel-opalina.jpg") center/340px auto repeat;
+  border:1px solid rgba(180,139,72,.58);
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.42),
+    inset 0 -12px 28px rgba(154,113,53,.06);
+  z-index:2;
+}
+
+/* Bolsillo triangular frontal. */
+.abrir-carta__sobre::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:60%;
+  border-radius:0 0 5px 5px;
+  background:
+    linear-gradient(rgba(230,205,160,.45),rgba(196,155,85,.30)),
+    url("../assets/papel-opalina.jpg") center/320px auto repeat;
+  clip-path:polygon(0 100%,50% 0,100% 100%);
+  border-bottom:1px solid rgba(139,103,49,.36);
+  z-index:6;
+}
+
+/* Solapa 3D. */
+.abrir-carta__solapa{
+  position:absolute;
+  left:0;
+  right:0;
+  top:0;
+  height:54%;
+  background:
+    linear-gradient(rgba(255,250,240,.62),rgba(221,195,146,.52)),
+    url("../assets/papel-opalina.jpg") center/320px auto repeat;
+  clip-path:polygon(0 0,100% 0,50% 100%);
+  transform-origin:top center;
+  transform-style:preserve-3d;
+  transition:transform .58s cubic-bezier(.2,.72,.2,1);
+  z-index:8;
+  backface-visibility:hidden;
+  filter:drop-shadow(0 1px 0 rgba(126,91,39,.30));
+}
+
+/* La tarjeta que sale del sobre. */
+.abrir-carta__papel{
+  position:absolute;
+  left:9%;
+  right:9%;
+  top:8%;
+  bottom:17%;
+  overflow:hidden;
+  border-radius:3px;
+  background:
+    url("../assets/Flores separadores.png") center 87%/72% auto no-repeat,
+    linear-gradient(rgba(255,253,248,.48),rgba(249,240,226,.56)),
+    url("../assets/papel-opalina.jpg") center/290px auto repeat;
+  border:1px solid rgba(194,154,83,.50);
+  box-shadow:0 8px 18px rgba(91,60,24,.10),inset 0 0 0 4px rgba(255,255,255,.22);
+  transform:translateY(32%) scale(.88);
+  opacity:0;
+  transition:transform .68s cubic-bezier(.16,.82,.28,1) .10s,opacity .20s ease .13s;
+  z-index:4;
+}
+.abrir-carta__papel::before{
+  content:"Mateo & Carol";
+  position:absolute;
+  left:8px;
+  right:8px;
+  top:15px;
+  color:#906b35;
+  font-family:var(--f-script);
+  font-size:25px;
+  font-weight:400;
+  line-height:1;
+  text-align:center;
+}
+.abrir-carta__papel::after{
+  content:"31 · OCTUBRE · 2026";
+  position:absolute;
+  left:8px;
+  right:8px;
+  top:50px;
+  color:#786650;
+  font-family:var(--f-display);
+  font-size:7px;
+  font-weight:500;
+  letter-spacing:.18em;
+  text-align:center;
+}
+
+/* Lacre M&C. */
+.abrir-carta__sello{
+  position:absolute;
+  left:50%;
+  top:51%;
+  z-index:11;
+  width:58px;
+  height:58px;
+  transform:translate(-50%,-50%);
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(255,239,195,.58);
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 34% 27%,#f6dfa2 0 7%,transparent 8%),
+    radial-gradient(circle at 35% 26%,#e3bc6b,#b98235 55%,#795226 100%);
+  color:#fff9e9;
+  font-family:var(--f-display);
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:.055em;
+  text-shadow:0 1px 2px rgba(77,48,15,.48);
+  box-shadow:
+    0 5px 12px rgba(54,35,13,.40),
+    inset 0 0 0 3px rgba(112,74,29,.20),
+    inset 0 0 0 5px rgba(255,236,184,.12);
+  transition:transform .34s ease,opacity .26s ease;
+}
+.abrir-carta__sello::before{
+  content:"";
+  position:absolute;
+  inset:7px;
+  border:1px solid rgba(255,240,205,.45);
+  border-radius:50%;
+}
+
+/* Etiqueta inferior: funciona como el indicador del baby shower, pero mas elegante. */
+.abrir-carta__texto{
+  position:absolute;
+  left:50%;
+  bottom:0;
+  min-width:176px;
+  transform:translateX(-50%);
+  padding:7px 15px 8px;
+  border:1px solid rgba(241,217,163,.52);
+  border-radius:999px;
+  background:rgba(28,21,15,.43);
+  color:#fff7e8;
+  font-family:var(--f-display);
+  font-size:8px;
+  font-weight:500;
+  line-height:1.15;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  text-shadow:0 2px 8px rgba(0,0,0,.35);
+  box-shadow:0 6px 18px rgba(0,0,0,.15);
+  backdrop-filter:blur(5px);
+  transition:opacity .22s ease,transform .22s ease;
+  z-index:15;
+}
+.abrir-carta__texto::before{
+  content:"Toca el sello";
+  display:block;
+  margin-bottom:3px;
+  color:#f2d79e;
+  font-size:9px;
+  letter-spacing:.20em;
+  animation:llamada-sello 1.35s ease-in-out infinite;
+}
+
+/* Un pequeno indicador que apunta visualmente al sello sin usar emoji. */
+.abrir-carta__texto::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:100%;
+  width:1px;
+  height:20px;
+  margin-left:-.5px;
+  background:linear-gradient(transparent,rgba(239,216,159,.86));
+}
+
+/* Estado de apertura, siguiendo la secuencia del sobre de Thiago. */
+.abrir-carta.abierto .abrir-carta__sobre{animation:none}
+.abrir-carta.abierto .abrir-carta__solapa{
+  transform:rotateX(177deg);
+  z-index:1;
+}
+.abrir-carta.abierto .abrir-carta__papel{
+  transform:translateY(-66%) scale(1);
+  opacity:1;
+}
+.abrir-carta.abierto .abrir-carta__sello{
+  transform:translate(-50%,-50%) scale(.36);
+  opacity:0;
+}
+.abrir-carta.abierto .abrir-carta__texto{
+  opacity:0;
+  transform:translateX(-50%) translateY(8px);
+}
+.abrir-carta.abierto::after{
+  opacity:0;
+  animation:none;
+}
+
+@keyframes pulso-lacre-boda{
+  0%{opacity:.95;transform:translate(-50%,-50%) scale(.68)}
+  72%{opacity:0;transform:translate(-50%,-50%) scale(1.56)}
+  100%{opacity:0;transform:translate(-50%,-50%) scale(1.56)}
+}
+@keyframes sobre-boda-flota{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-4px)}
+}
+@keyframes llamada-sello{
+  0%,100%{opacity:.68;letter-spacing:.18em}
+  50%{opacity:1;letter-spacing:.22em}
+}
+
+@media (max-width:420px){
+  .portada__contenido{padding-top:calc(28px + env(safe-area-inset-top))}
+  .portada__nombres{margin-bottom:10px;font-size:clamp(66px,18vw,90px)}
+  .abrir-carta{width:min(82vw,292px);height:208px}
+  .abrir-carta__sobre{left:8%;right:8%;height:151px}
+  .abrir-carta::after{top:42%;width:62px;height:62px}
+}
+
+@media (min-width:720px){
+  .abrir-carta{width:310px;height:222px}
+  .abrir-carta__sobre{height:162px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .abrir-carta__sobre,.abrir-carta::after,.abrir-carta__texto::before{animation:none}
+  .abrir-carta__solapa,.abrir-carta__papel,.abrir-carta__sello,.abrir-carta__texto{transition-duration:.01ms}
+}
