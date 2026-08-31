@@ -59,6 +59,17 @@
     actualizar();
   }
 
+  function iconoTimeline(texto) {
+    const t = String(texto || "").toLowerCase();
+    if (t.includes("eucarist") || t.includes("ceremon")) return "assets/Iglesia.png";
+    if (t.includes("recepción") || t.includes("recepcion")) return "assets/Copas.png";
+    if (t.includes("entrada")) return "assets/Anillos.png";
+    if (t.includes("brindis") || t.includes("cena")) return "assets/clochecena.png";
+    if (t.includes("baile") || t.includes("pista") || t.includes("fiesta")) return "assets/música.png";
+    if (t.includes("ramo")) return "assets/Flores separadores.png";
+    return "assets/Anillos.png";
+  }
+
   function pintarTimeline() {
     const cont = $("#timeline");
     if (!cont) return;
@@ -66,7 +77,23 @@
     (DATOS.timeline || []).forEach(([hora, texto]) => {
       const item = document.createElement("div");
       item.className = "timeline__item";
-      item.innerHTML = `<time>${hora}</time><span>${texto}</span>`;
+
+      const icono = document.createElement("div");
+      icono.className = "timeline__icono";
+      icono.setAttribute("aria-hidden", "true");
+      const img = document.createElement("img");
+      img.src = iconoTimeline(texto);
+      img.alt = "";
+      img.loading = "lazy";
+      img.decoding = "async";
+      icono.appendChild(img);
+
+      const time = document.createElement("time");
+      time.textContent = hora;
+      const span = document.createElement("span");
+      span.textContent = texto;
+
+      item.append(icono, time, span);
       cont.appendChild(item);
     });
   }
