@@ -5,9 +5,9 @@
 
 const DATOS = {
   novio: "Mateo",
-  novia: "Carol",
+  novia: "Caroll",
   evento: "Boda",
-  selloInicial: "M & C",
+  selloInicial: "C & M",
 
   fechaISO: "2026-10-31T15:00",
   diaSemana: "Sábado",
@@ -30,8 +30,9 @@ const DATOS = {
 
   /* Numero con codigo de pais. Colombia: 57 */
   whatsapp: "573157888301",
-  whatsappMensaje: "Hola, Mateo y Carol. Soy {nombre} y confirmo con mucha alegría mi asistencia a su boda. Muchas gracias por la invitación; será un gusto acompañarlos en este día tan especial.",
+  whatsappMensaje: "Hola, Caroll y Mateo. Soy {nombre} y confirmo con mucha alegría mi asistencia a su boda. Muchas gracias por la invitación; será un gusto acompañarlos en este día tan especial.",
 
+  /* La cita biblica se agregara aqui cuando la pareja la defina. */
   fraseIntro: "Tenemos el honor de invitarte a celebrar el inicio de nuestra vida juntos. Tu presencia hará parte de un día que guardaremos para siempre.",
   fraseConfirmar: "Agradecemos confirmar tu asistencia para preparar cada detalle con mucho cariño.",
   fraseRegalos: "Lluvia de sobres",
@@ -64,27 +65,26 @@ const DATOS = {
 (function cargarComplementosBoda() {
   const cssCarrusel = document.createElement("link");
   cssCarrusel.rel = "stylesheet";
-  cssCarrusel.href = "css/carrusel-coverflow.css?v=6";
+  cssCarrusel.href = "css/carrusel-coverflow.css?v=7";
   document.head.appendChild(cssCarrusel);
 
   const cssLimpieza = document.createElement("link");
   cssLimpieza.rel = "stylesheet";
-  cssLimpieza.href = "css/limpieza-visual.css?v=6";
+  cssLimpieza.href = "css/limpieza-visual.css?v=7";
   document.head.appendChild(cssLimpieza);
 
-  /* Ajustes finos de composicion: nombres mas unidos y foto despues del primer separador. */
   const cssAjustes = document.createElement("link");
   cssAjustes.rel = "stylesheet";
-  cssAjustes.href = "css/ajustes-nombres-foto.css?v=1";
+  cssAjustes.href = "css/ajustes-nombres-foto.css?v=2";
   document.head.appendChild(cssAjustes);
 
   const scriptCarrusel = document.createElement("script");
-  scriptCarrusel.src = "js/carrusel-coverflow.js?v=6";
+  scriptCarrusel.src = "js/carrusel-coverflow.js?v=7";
   scriptCarrusel.async = false;
   document.head.appendChild(scriptCarrusel);
 
   const scriptAjustes = document.createElement("script");
-  scriptAjustes.src = "js/ajustes-diseno.js?v=1";
+  scriptAjustes.src = "js/ajustes-diseno.js?v=2";
   scriptAjustes.async = false;
   document.head.appendChild(scriptAjustes);
 })();
