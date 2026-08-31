@@ -1,0 +1,93 @@
+/* Ajustes finos de composicion: nombres + foto posterior al primer separador */
+
+/* La foto de apertura antigua se habia generado con ::before. Se elimina. */
+.bloque--intro::before{
+  content:none!important;
+  display:none!important;
+}
+
+/* Nombres de la portada: mas compactos y entrelazados visualmente. */
+.portada__nombres{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:0!important;
+  line-height:.80!important;
+  margin-bottom:16px!important;
+}
+.portada__nombres > span:first-child{
+  display:block;
+  transform:translateX(18px);
+}
+.portada__nombres > .amp{
+  display:block;
+  margin:-2px 0 -1px!important;
+  line-height:.86!important;
+}
+.portada__nombres > span:last-child{
+  display:block;
+  transform:translateX(-18px);
+  margin-top:-2px;
+}
+
+/* Nombres de la carta: misma logica, un poco mas contenida. */
+.nombres-interior{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:0!important;
+  line-height:.84!important;
+  margin:5px 0 18px!important;
+}
+.nombres-interior > span:first-child{
+  display:block;
+  transform:translateX(14px);
+}
+.nombres-interior > span:nth-child(2){
+  display:block;
+  margin:-1px 0 0!important;
+  line-height:.82!important;
+}
+.nombres-interior > span:last-child{
+  display:block;
+  transform:translateX(-14px);
+  margin-top:-2px;
+}
+
+/* Foto que ahora aparece DESPUES del primer separador floral. */
+.foto-despues-separador{
+  position:relative;
+  z-index:1;
+  width:min(94%,430px);
+  margin:20px auto 34px;
+  overflow:hidden;
+  border-radius:12px;
+  box-shadow:0 11px 27px rgba(60,40,20,.12);
+}
+.foto-despues-separador img{
+  display:block;
+  width:100%;
+  height:auto;
+  border:0;
+  border-radius:inherit;
+}
+
+/* El primer separador queda un poco mas cerca del texto y la foto. */
+.bloque--intro + .separador-floral--principal{
+  margin-top:0!important;
+  margin-bottom:0!important;
+}
+
+@media (max-width:420px){
+  .portada__nombres > span:first-child{transform:translateX(13px)}
+  .portada__nombres > span:last-child{transform:translateX(-13px)}
+  .nombres-interior > span:first-child{transform:translateX(10px)}
+  .nombres-interior > span:last-child{transform:translateX(-10px)}
+  .foto-despues-separador{
+    width:96%;
+    margin:17px auto 30px;
+    border-radius:10px;
+  }
+}
