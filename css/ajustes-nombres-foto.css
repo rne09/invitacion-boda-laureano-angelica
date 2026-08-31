@@ -9,40 +9,36 @@
 /* ========================= PORTADA: CAROLL & MATEO ========================= */
 .portada__nombres{
   position:relative!important;
-  top:24px!important;
+  top:54px!important;
   display:flex!important;
   flex-direction:column!important;
   align-items:center!important;
   justify-content:center!important;
   gap:0!important;
-  line-height:.74!important;
-  margin:auto 0 40px!important;
+  line-height:.88!important;
+  margin:auto 0 34px!important;
   text-align:center!important;
   text-shadow:
-    0 3px 13px rgba(0,0,0,.60),
-    0 1px 4px rgba(0,0,0,.78),
+    0 4px 16px rgba(0,0,0,.62),
+    0 2px 6px rgba(0,0,0,.56),
     0 0 1px rgba(0,0,0,.72)!important;
 }
 .portada__nombres .nombre-caroll{
   display:block!important;
-  transform:translateX(-9px)!important;
-  margin:0!important;
+  transform:translateX(-5px)!important;
+  margin:0 0 2px!important;
 }
 .portada__nombres .amp-ajustado{
   display:block!important;
-  margin:-5px 0 -4px!important;
-  line-height:.72!important;
+  margin:4px 0 3px!important;
+  line-height:.92!important;
   color:#f0d6a3!important;
 }
 .portada__nombres .nombre-mateo{
   display:block!important;
-  transform:translateX(9px)!important;
-  margin:0!important;
-  text-transform:capitalize!important;
-}
-.portada__nombres .nombre-mateo::first-letter{
-  font-family:"Pinyon Script","Great Vibes",cursive!important;
-  font-size:1.16em!important;
+  transform:translateX(5px)!important;
+  margin:2px 0 0!important;
+  text-transform:none!important;
 }
 
 /* ========================= INTERIOR: CAROLL & MATEO ========================= */
@@ -52,33 +48,28 @@
   align-items:center!important;
   justify-content:center!important;
   gap:0!important;
-  line-height:.79!important;
-  margin:5px 0 18px!important;
+  line-height:.92!important;
+  margin:8px 0 20px!important;
   text-align:center!important;
 }
 .nombres-interior .nombre-caroll{
   display:block!important;
-  transform:translateX(-7px)!important;
-  margin:0!important;
+  transform:translateX(-3px)!important;
+  margin:0 0 3px!important;
 }
 .nombres-interior .amp-ajustado{
   display:block!important;
-  margin:-3px 0 -3px!important;
-  line-height:.76!important;
+  margin:4px 0 3px!important;
+  line-height:.94!important;
 }
 .nombres-interior .nombre-mateo{
   display:block!important;
-  transform:translateX(7px)!important;
-  margin:0!important;
-  text-transform:capitalize!important;
-}
-.nombres-interior .nombre-mateo::first-letter{
-  font-family:"Pinyon Script","Great Vibes",cursive!important;
-  font-size:1.15em!important;
+  transform:translateX(3px)!important;
+  margin:2px 0 0!important;
+  text-transform:none!important;
 }
 
 /* ========================= SIN FLORES EN TODA LA TARJETA ========================= */
-/* Se retiran esquinas, ramos y separadores florales existentes. */
 .decoracion-esquina,
 .ornamento-encabezado,
 .separador-floral,
@@ -90,7 +81,6 @@
   display:none!important;
 }
 
-/* El sobre ya no utiliza las imagenes florales de las esquinas. */
 .abrir-carta{
   background:none!important;
 }
@@ -119,31 +109,24 @@
   opacity:.92;
 }
 
-/* Anillos */
 .bloque--intro .icono-seccion::before{
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23b58a47' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='26' cy='36' r='14'/%3E%3Ccircle cx='38' cy='36' r='14'/%3E%3Cpath d='M32 10l5 6-5 6-5-6z'/%3E%3Cpath d='M29 22h6'/%3E%3C/g%3E%3C/svg%3E")!important;
 }
-/* Calendario */
 .bloque--fecha .icono-seccion::before{
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23b58a47' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='12' y='15' width='40' height='37' rx='3'/%3E%3Cpath d='M20 10v10M44 10v10M12 25h40'/%3E%3C/g%3E%3Ctext x='32' y='43' text-anchor='middle' font-size='15' font-family='Georgia' fill='%23b58a47'%3E31%3C/text%3E%3C/svg%3E")!important;
 }
-/* Reloj de arena */
 .bloque--cuenta .icono-seccion::before{
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23b58a47' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 10h28M18 54h28M21 11c0 11 4 15 11 21-7 6-11 10-11 21M43 11c0 11-4 15-11 21 7 6 11 10 11 21'/%3E%3Cpath d='M26 21h12M27 43h10'/%3E%3C/g%3E%3C/svg%3E")!important;
 }
-/* Iglesia */
 .bloque--ceremonia .icono-seccion::before{
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23b58a47' stroke-width='2.1' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 54h40M18 54V30l14-11 14 11v24M27 54V40h10v14M32 7v12M27 12h10'/%3E%3Cpath d='M18 34h-6v20M46 34h6v20'/%3E%3C/g%3E%3C/svg%3E")!important;
 }
-/* Copas */
 .bloque--recepcion .icono-seccion::before{
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23b58a47' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 12h17l-2 16c-1 7-12 7-13 0zM22.5 34v14M16 52h13M33 12h17l-2 16c-1 7-12 7-13 0zM41.5 34v14M35 52h13'/%3E%3C/g%3E%3C/svg%3E")!important;
 }
-/* Percha / vestimenta */
 .bloque--dress .icono-seccion::before{
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23b58a47' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M28 15c0-5 8-5 8 0 0 4-4 5-4 9M32 24L10 43c-2 2-1 5 2 5h40c3 0 4-3 2-5z'/%3E%3C/g%3E%3C/svg%3E")!important;
 }
-/* Sobre para regalos */
 .bloque--regalos .icono-seccion::before{
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23b58a47' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='10' y='17' width='44' height='31' rx='3'/%3E%3Cpath d='M11 20l21 16 21-16M11 46l15-13M53 46L38 33'/%3E%3C/g%3E%3C/svg%3E")!important;
 }
@@ -176,7 +159,6 @@
   content:" ";
 }
 
-/* Foto que aparece despues de la introduccion. Ya no depende visualmente del separador floral. */
 .foto-despues-separador{
   position:relative;
   z-index:1;
@@ -204,14 +186,15 @@
 
 @media (max-width:420px){
   .portada__nombres{
-    top:28px!important;
-    margin-bottom:44px!important;
-    line-height:.72!important;
+    top:64px!important;
+    margin-bottom:36px!important;
+    line-height:.90!important;
   }
-  .portada__nombres .nombre-caroll{transform:translateX(-7px)!important}
-  .portada__nombres .nombre-mateo{transform:translateX(7px)!important}
-  .nombres-interior .nombre-caroll{transform:translateX(-5px)!important}
-  .nombres-interior .nombre-mateo{transform:translateX(5px)!important}
+  .portada__nombres .nombre-caroll{transform:translateX(-4px)!important}
+  .portada__nombres .nombre-mateo{transform:translateX(4px)!important}
+  .nombres-interior{line-height:.94!important}
+  .nombres-interior .nombre-caroll{transform:translateX(-2px)!important}
+  .nombres-interior .nombre-mateo{transform:translateX(2px)!important}
 
   .icono-seccion{width:66px!important;height:66px!important}
   .bloque--timeline .titulo-mixto,
