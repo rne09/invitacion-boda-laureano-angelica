@@ -39,6 +39,25 @@
   transform:translateX(5px)!important;
   margin:2px 0 0!important;
   text-transform:none!important;
+  white-space:nowrap!important;
+}
+
+/* La M se construye separada para que visualmente sea inequívocamente mayúscula. */
+.nombre-mateo .mateo-inicial{
+  display:inline-block!important;
+  margin-right:-.03em!important;
+  color:inherit!important;
+  font-family:"Cormorant Garamond",Georgia,serif!important;
+  font-size:1.04em!important;
+  font-style:italic!important;
+  font-weight:500!important;
+  line-height:.8!important;
+  vertical-align:.02em!important;
+}
+.nombre-mateo .mateo-resto{
+  font-family:var(--f-script)!important;
+  font-size:inherit!important;
+  font-style:normal!important;
 }
 
 /* ========================= INTERIOR: CAROLL & MATEO ========================= */
@@ -67,6 +86,7 @@
   transform:translateX(3px)!important;
   margin:2px 0 0!important;
   text-transform:none!important;
+  white-space:nowrap!important;
 }
 
 /* ========================= SIN FLORES EN TODA LA TARJETA ========================= */
@@ -124,23 +144,28 @@
 .bloque--recepcion .icono-seccion::before{
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23b58a47' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 12h17l-2 16c-1 7-12 7-13 0zM22.5 34v14M16 52h13M33 12h17l-2 16c-1 7-12 7-13 0zM41.5 34v14M35 52h13'/%3E%3C/g%3E%3C/svg%3E")!important;
 }
+
+/* Vestimenta: chaleco masculino + vestido femenino. */
 .bloque--dress .icono-seccion::before{
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23b58a47' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M28 15c0-5 8-5 8 0 0 4-4 5-4 9M32 24L10 43c-2 2-1 5 2 5h40c3 0 4-3 2-5z'/%3E%3C/g%3E%3C/svg%3E")!important;
+  inset:1px!important;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 76 64'%3E%3Cg fill='none' stroke='%23b58a47' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3C!-- chaleco --%3E%3Cpath d='M8 15l10-5 7 8 7-8 9 5-4 10 2 28H12l2-28z'/%3E%3Cpath d='M18 10l7 17 7-17M25 27v26M19 36h-4M31 36h5'/%3E%3Ccircle cx='25' cy='34' r='1'/%3E%3Ccircle cx='25' cy='41' r='1'/%3E%3C!-- vestido --%3E%3Cpath d='M52 10h10l-2 11 4 8 7 24H43l7-24 4-8z'/%3E%3Cpath d='M52 10l5 8 5-8M50 29h14'/%3E%3C/g%3E%3C/svg%3E")!important;
 }
 .bloque--regalos .icono-seccion::before{
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23b58a47' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='10' y='17' width='44' height='31' rx='3'/%3E%3Cpath d='M11 20l21 16 21-16M11 46l15-13M53 46L38 33'/%3E%3C/g%3E%3C/svg%3E")!important;
 }
 
-/* ========================= TITULOS EN UNA MISMA TIPOGRAFIA ========================= */
+/* ========================= TITULOS PRINCIPALES EN CURSIVA ========================= */
+/* Minuto a Minuto y Nuestra Historia ahora siguen la misma familia visual de Recepción. */
 .bloque--timeline .titulo-mixto,
 .bloque--galeria .titulo-mixto{
-  font-family:var(--f-texto)!important;
-  font-size:36px!important;
-  font-weight:500!important;
-  line-height:1.05!important;
-  letter-spacing:.01em!important;
+  font-family:var(--f-script)!important;
+  font-size:47px!important;
+  font-weight:400!important;
+  line-height:.94!important;
+  letter-spacing:0!important;
   color:var(--dorado-osc)!important;
   text-transform:none!important;
+  text-align:center!important;
 }
 .bloque--timeline .titulo-mixto > span,
 .bloque--galeria .titulo-mixto > span{
@@ -196,9 +221,10 @@
   .nombres-interior .nombre-caroll{transform:translateX(-2px)!important}
   .nombres-interior .nombre-mateo{transform:translateX(2px)!important}
 
-  .icono-seccion{width:66px!important;height:66px!important}
+  .icono-seccion{width:68px!important;height:68px!important}
+  .bloque--dress .icono-seccion{width:78px!important;height:68px!important}
   .bloque--timeline .titulo-mixto,
-  .bloque--galeria .titulo-mixto{font-size:33px!important}
+  .bloque--galeria .titulo-mixto{font-size:44px!important}
 
   .foto-despues-separador{
     width:96%;
