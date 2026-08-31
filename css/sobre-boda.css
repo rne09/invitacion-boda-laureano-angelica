@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SOBRE DE APERTURA — MATEO & CAROL
+   SOBRE DE APERTURA — CAROLL & MATEO
    Adaptado de la mecanica 3D de la invitacion de Thiago, con estetica de boda.
    ========================================================================== */
 
@@ -38,7 +38,7 @@
   text-shadow:0 4px 15px rgba(0,0,0,.35);
 }
 
-/* El boton deja de parecer tarjeta: ahora TODO el control es el sobre. */
+/* Todo el control es el sobre. Sin decoraciones florales. */
 .abrir-carta{
   position:relative;
   width:min(78vw,300px);
@@ -48,9 +48,7 @@
   padding:0;
   border:0;
   border-radius:0;
-  background:
-    url("../assets/Esquina superior iz flores.png") left -7px top 10px/106px auto no-repeat,
-    url("../assets/Esquina derecha inferior.png") right -9px top 70px/110px auto no-repeat;
+  background:none;
   box-shadow:none;
   color:#fff8ea;
   display:block;
@@ -68,7 +66,6 @@
   border-radius:16px;
 }
 
-/* Pulso alrededor del lacre: tomado de la idea del baby shower. */
 .abrir-carta::after{
   content:"";
   position:absolute;
@@ -99,7 +96,6 @@
   z-index:5;
 }
 
-/* Cuerpo del sobre, con textura real de opalina y pliegues laterales. */
 .abrir-carta__sobre::before{
   content:"";
   position:absolute;
@@ -117,7 +113,6 @@
   z-index:2;
 }
 
-/* Bolsillo triangular frontal. */
 .abrir-carta__sobre::after{
   content:"";
   position:absolute;
@@ -134,7 +129,6 @@
   z-index:6;
 }
 
-/* Solapa 3D. */
 .abrir-carta__solapa{
   position:absolute;
   left:0;
@@ -153,7 +147,6 @@
   filter:drop-shadow(0 1px 0 rgba(126,91,39,.30));
 }
 
-/* La tarjeta que sale del sobre. */
 .abrir-carta__papel{
   position:absolute;
   left:9%;
@@ -163,7 +156,6 @@
   overflow:hidden;
   border-radius:3px;
   background:
-    url("../assets/Flores separadores.png") center 87%/72% auto no-repeat,
     linear-gradient(rgba(255,253,248,.48),rgba(249,240,226,.56)),
     url("../assets/papel-opalina.jpg") center/290px auto repeat;
   border:1px solid rgba(194,154,83,.50);
@@ -174,7 +166,7 @@
   z-index:4;
 }
 .abrir-carta__papel::before{
-  content:"Mateo & Carol";
+  content:"Caroll & Mateo";
   position:absolute;
   left:8px;
   right:8px;
@@ -200,7 +192,6 @@
   text-align:center;
 }
 
-/* Lacre M&C. */
 .abrir-carta__sello{
   position:absolute;
   left:50%;
@@ -236,7 +227,6 @@
   border-radius:50%;
 }
 
-/* Etiqueta inferior: funciona como el indicador del baby shower, pero mas elegante. */
 .abrir-carta__texto{
   position:absolute;
   left:50%;
@@ -269,8 +259,6 @@
   letter-spacing:.20em;
   animation:llamada-sello 1.35s ease-in-out infinite;
 }
-
-/* Un pequeno indicador que apunta visualmente al sello sin usar emoji. */
 .abrir-carta__texto::after{
   content:"";
   position:absolute;
@@ -282,7 +270,6 @@
   background:linear-gradient(transparent,rgba(239,216,159,.86));
 }
 
-/* Estado de apertura, siguiendo la secuencia del sobre de Thiago. */
 .abrir-carta.abierto .abrir-carta__sobre{animation:none}
 .abrir-carta.abierto .abrir-carta__solapa{
   transform:rotateX(177deg);
