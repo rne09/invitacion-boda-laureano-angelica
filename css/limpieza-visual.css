@@ -34,6 +34,21 @@
   opacity:.86!important;
 }
 
+/* ========================= FOTO DE APERTURA INTERIOR =========================
+   Reutiliza una foto existente para que al abrir la carta el inicio no quede seco. */
+.bloque--intro::before{
+  content:"";
+  display:block;
+  width:min(100%,430px);
+  aspect-ratio:4/5;
+  margin:-28px auto 34px;
+  border-radius:18px;
+  background:
+    linear-gradient(180deg,rgba(20,14,9,0) 68%,rgba(20,14,9,.12)),
+    url("../assets/foto-2-web.jpg") center 42%/cover no-repeat;
+  box-shadow:0 12px 30px rgba(60,40,20,.13);
+}
+
 /* Iconos de seccion mas pequeños y con mas aire alrededor. */
 .icono-seccion{width:92px!important;height:92px!important;margin-bottom:12px!important}
 .icono-seccion--grande{width:108px!important;height:108px!important}
@@ -140,6 +155,13 @@
   .icono-seccion--dress{width:102px!important;height:102px!important}
   .timeline__item{grid-template-columns:72px 1fr!important;padding:10px 0!important}
   .timeline__item span{font-size:17px!important}
+
+  .bloque--intro::before{
+    width:100%;
+    aspect-ratio:4/5;
+    margin:-20px auto 30px;
+    border-radius:14px;
+  }
 
   .bloque--galeria .galeria{
     gap:14px!important;
