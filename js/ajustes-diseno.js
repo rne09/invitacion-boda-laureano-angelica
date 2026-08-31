@@ -45,29 +45,29 @@
     if (galeria) galeria.setAttribute("aria-label", "Galería de Caroll y Mateo");
   }
 
+  function agregarFotoInterior() {
+    const intro = document.querySelector(".bloque--intro");
+    if (!intro || document.querySelector(".foto-despues-separador")) return;
+
+    const marco = document.createElement("div");
+    marco.className = "foto-despues-separador revelar";
+
+    const img = document.createElement("img");
+    img.src = "assets/foto-2-web.jpg";
+    img.alt = "Caroll y Mateo";
+    img.loading = "eager";
+    img.decoding = "async";
+
+    marco.appendChild(img);
+    intro.insertAdjacentElement("afterend", marco);
+    requestAnimationFrame(() => marco.classList.add("dentro"));
+  }
+
   function aplicarAjustes() {
     ordenarNombres(".portada__nombres");
     ordenarNombres(".nombres-interior");
     actualizarTextosEstaticos();
-
-    const intro = document.querySelector(".bloque--intro");
-    const primerSeparador = intro?.nextElementSibling;
-
-    if (primerSeparador && primerSeparador.classList.contains("separador-floral--principal") && !document.querySelector(".foto-despues-separador")) {
-      const marco = document.createElement("div");
-      marco.className = "foto-despues-separador revelar";
-
-      const img = document.createElement("img");
-      img.src = "assets/foto-2-web.jpg";
-      img.alt = "Caroll y Mateo";
-      img.loading = "eager";
-      img.decoding = "async";
-
-      marco.appendChild(img);
-      primerSeparador.insertAdjacentElement("afterend", marco);
-
-      requestAnimationFrame(() => marco.classList.add("dentro"));
-    }
+    agregarFotoInterior();
   }
 
   if (document.readyState === "loading") {
