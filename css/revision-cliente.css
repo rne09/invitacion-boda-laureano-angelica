@@ -1,0 +1,81 @@
+/* Revision final solicitada por el cliente: nombres consistentes + sello PNG real. */
+
+/* Caroll y Mateo deben compartir exactamente la misma familia, tamaño, peso y color. */
+.portada__nombres .nombre-caroll,
+.portada__nombres .nombre-mateo{
+  font-family:var(--f-script)!important;
+  font-size:inherit!important;
+  font-weight:400!important;
+  font-style:normal!important;
+  color:inherit!important;
+  line-height:1!important;
+  letter-spacing:0!important;
+  text-transform:none!important;
+}
+
+.nombres-interior .nombre-caroll,
+.nombres-interior .nombre-mateo{
+  font-family:var(--f-script)!important;
+  font-size:inherit!important;
+  font-weight:400!important;
+  font-style:normal!important;
+  color:inherit!important;
+  line-height:1!important;
+  letter-spacing:0!important;
+  text-transform:none!important;
+}
+
+/* Compatibilidad por si el navegador conserva temporalmente el marcado anterior de Mateo. */
+.nombre-mateo .mateo-inicial,
+.nombre-mateo .mateo-resto{
+  font-family:inherit!important;
+  font-size:inherit!important;
+  font-weight:inherit!important;
+  font-style:inherit!important;
+  color:inherit!important;
+  line-height:inherit!important;
+  vertical-align:baseline!important;
+  margin:0!important;
+}
+
+/* Sello aprobado: usa directamente el PNG transparente subido al repositorio. */
+.abrir-carta__sello{
+  width:88px!important;
+  height:88px!important;
+  border:0!important;
+  border-radius:0!important;
+  background:url("../assets/Sello_nuevo.png") center/contain no-repeat!important;
+  box-shadow:none!important;
+  filter:drop-shadow(0 7px 8px rgba(50,27,7,.34));
+  color:transparent!important;
+  font-size:0!important;
+  letter-spacing:0!important;
+  text-shadow:none!important;
+}
+.abrir-carta__sello::before,
+.abrir-carta__sello::after{
+  display:none!important;
+}
+
+/* El pulso acompaña el nuevo diámetro del sello sin taparlo. */
+.abrir-carta::after{
+  width:90px!important;
+  height:90px!important;
+  border-color:rgba(239,216,159,.70)!important;
+}
+
+.abrir-carta.abierto .abrir-carta__sello{
+  transform:translate(-50%,-50%) scale(.28) rotate(-6deg)!important;
+  opacity:0!important;
+}
+
+@media (max-width:420px){
+  .abrir-carta__sello{
+    width:82px!important;
+    height:82px!important;
+  }
+  .abrir-carta::after{
+    width:84px!important;
+    height:84px!important;
+  }
+}
