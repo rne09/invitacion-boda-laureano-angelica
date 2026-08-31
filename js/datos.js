@@ -75,7 +75,7 @@ const DATOS = {
 
   const cssAjustes = document.createElement("link");
   cssAjustes.rel = "stylesheet";
-  cssAjustes.href = "css/ajustes-nombres-foto.css?v=3";
+  cssAjustes.href = "css/ajustes-nombres-foto.css?v=4";
   document.head.appendChild(cssAjustes);
 
   const scriptCarrusel = document.createElement("script");
@@ -84,7 +84,7 @@ const DATOS = {
   document.head.appendChild(scriptCarrusel);
 
   const scriptAjustes = document.createElement("script");
-  scriptAjustes.src = "js/ajustes-diseno.js?v=2";
+  scriptAjustes.src = "js/ajustes-diseno.js?v=4";
   scriptAjustes.async = false;
   document.head.appendChild(scriptAjustes);
 })();
