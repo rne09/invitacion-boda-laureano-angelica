@@ -45,6 +45,19 @@
     if (galeria) galeria.setAttribute("aria-label", "Galería de Caroll y Mateo");
   }
 
+  function limpiarContenidoGenerado() {
+    /* app.js conserva compatibilidad con la version anterior y crea iconos
+       en el timeline. Los retiramos para que no aparezca ninguna ilustracion floral. */
+    document.querySelectorAll(".timeline__icono").forEach((icono) => icono.remove());
+
+    document.querySelectorAll("#galeria .carrusel__item").forEach((item, i) => {
+      item.setAttribute("aria-label", `Ver foto ${i + 1} de Caroll y Mateo en grande`);
+    });
+    document.querySelectorAll("#galeria .galeria__foto").forEach((img, i) => {
+      img.alt = `Foto ${i + 1} de Caroll y Mateo`;
+    });
+  }
+
   function agregarFotoInterior() {
     const intro = document.querySelector(".bloque--intro");
     if (!intro || document.querySelector(".foto-despues-separador")) return;
@@ -68,6 +81,14 @@
     ordenarNombres(".nombres-interior");
     actualizarTextosEstaticos();
     agregarFotoInterior();
+
+    /* Se ejecuta tambien en el siguiente frame porque app.js pinta timeline y galeria
+       de forma inmediata al final del documento. */
+    limpiarContenidoGenerado();
+    requestAnimationFrame(() => {
+      actualizarTextosEstaticos();
+      limpiarContenidoGenerado();
+    });
   }
 
   if (document.readyState === "loading") {
