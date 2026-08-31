@@ -22,8 +22,8 @@ const DATOS = {
 
   horaRecepcion: "6:00 PM",
   lugarRecepcion: "Casa Campo Victoria",
-  direccionRecepcion: "Valledupar, Cesar",
-  mapaRecepcion: "https://instagram.com/casacampovictoria",
+  direccionRecepcion: "Dg. 10 N, Valledupar, Cesar",
+  mapaRecepcion: "https://maps.app.goo.gl/VFvinnwFn3CYG6zPA",
 
   dressCodeTitulo: "Formal",
   dressCodeNota: "Mujeres: vestido largo, unicolor.\nHombres: camisa manga larga y pantalón.",
