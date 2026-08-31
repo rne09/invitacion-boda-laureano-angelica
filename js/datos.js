@@ -64,18 +64,27 @@ const DATOS = {
 (function cargarComplementosBoda() {
   const cssCarrusel = document.createElement("link");
   cssCarrusel.rel = "stylesheet";
-  cssCarrusel.href = "css/carrusel-coverflow.css?v=5";
+  cssCarrusel.href = "css/carrusel-coverflow.css?v=6";
   document.head.appendChild(cssCarrusel);
 
-  /* Se agrega despues del CSS del carrusel para que la limpieza visual tenga
-     prioridad sobre bordes, tamaños e imagenes redundantes. */
   const cssLimpieza = document.createElement("link");
   cssLimpieza.rel = "stylesheet";
-  cssLimpieza.href = "css/limpieza-visual.css?v=5";
+  cssLimpieza.href = "css/limpieza-visual.css?v=6";
   document.head.appendChild(cssLimpieza);
 
-  const script = document.createElement("script");
-  script.src = "js/carrusel-coverflow.js?v=5";
-  script.async = false;
-  document.head.appendChild(script);
+  /* Ajustes finos de composicion: nombres mas unidos y foto despues del primer separador. */
+  const cssAjustes = document.createElement("link");
+  cssAjustes.rel = "stylesheet";
+  cssAjustes.href = "css/ajustes-nombres-foto.css?v=1";
+  document.head.appendChild(cssAjustes);
+
+  const scriptCarrusel = document.createElement("script");
+  scriptCarrusel.src = "js/carrusel-coverflow.js?v=6";
+  scriptCarrusel.async = false;
+  document.head.appendChild(scriptCarrusel);
+
+  const scriptAjustes = document.createElement("script");
+  scriptAjustes.src = "js/ajustes-diseno.js?v=1";
+  scriptAjustes.async = false;
+  document.head.appendChild(scriptAjustes);
 })();
