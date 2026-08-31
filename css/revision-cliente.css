@@ -1,18 +1,8 @@
 /* Revision final solicitada por el cliente: nombres consistentes + sello PNG real. */
 
-/* Caroll y Mateo deben compartir exactamente la misma familia, tamaño, peso y color. */
+/* Caroll y Mateo comparten exactamente la misma familia, tamaño, peso y color. */
 .portada__nombres .nombre-caroll,
-.portada__nombres .nombre-mateo{
-  font-family:var(--f-script)!important;
-  font-size:inherit!important;
-  font-weight:400!important;
-  font-style:normal!important;
-  color:inherit!important;
-  line-height:1!important;
-  letter-spacing:0!important;
-  text-transform:none!important;
-}
-
+.portada__nombres .nombre-mateo,
 .nombres-interior .nombre-caroll,
 .nombres-interior .nombre-mateo{
   font-family:var(--f-script)!important;
@@ -25,32 +15,60 @@
   text-transform:none!important;
 }
 
-/* Compatibilidad por si el navegador conserva temporalmente el marcado anterior de Mateo. */
-.nombre-mateo .mateo-inicial,
-.nombre-mateo .mateo-resto{
-  font-family:inherit!important;
-  font-size:inherit!important;
-  font-weight:inherit!important;
-  font-style:inherit!important;
-  color:inherit!important;
-  line-height:inherit!important;
-  vertical-align:baseline!important;
-  margin:0!important;
+/* Centrado robusto de portada, sobre y hoja interior. */
+.portada__contenido{
+  margin-left:auto!important;
+  margin-right:auto!important;
+  left:auto!important;
+  right:auto!important;
+}
+.abrir-carta{
+  align-self:center!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+}
+.abrir-carta__sobre{
+  left:5%!important;
+  right:5%!important;
+  margin-left:0!important;
+  margin-right:0!important;
+}
+.invitacion{
+  overflow-x:hidden!important;
+}
+.hoja{
+  left:auto!important;
+  right:auto!important;
+  transform:none!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
 }
 
-/* Sello aprobado: usa directamente el PNG transparente subido al repositorio. */
+/* Sello aprobado: ahora es una imagen real, no un background CSS. */
 .abrir-carta__sello{
-  width:88px!important;
-  height:88px!important;
+  width:90px!important;
+  height:90px!important;
+  padding:0!important;
   border:0!important;
   border-radius:0!important;
-  background:url("../assets/Sello_nuevo.png") center/contain no-repeat!important;
+  background:none!important;
   box-shadow:none!important;
   filter:drop-shadow(0 7px 8px rgba(50,27,7,.34));
   color:transparent!important;
   font-size:0!important;
-  letter-spacing:0!important;
-  text-shadow:none!important;
+  line-height:0!important;
+  overflow:visible!important;
+}
+.abrir-carta__sello img{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:none!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  opacity:1!important;
+  visibility:visible!important;
+  pointer-events:none!important;
 }
 .abrir-carta__sello::before,
 .abrir-carta__sello::after{
@@ -59,9 +77,9 @@
 
 /* El pulso acompaña el nuevo diámetro del sello sin taparlo. */
 .abrir-carta::after{
-  width:90px!important;
-  height:90px!important;
-  border-color:rgba(239,216,159,.70)!important;
+  width:92px!important;
+  height:92px!important;
+  border-color:rgba(239,216,159,.68)!important;
 }
 
 .abrir-carta.abierto .abrir-carta__sello{
@@ -70,12 +88,24 @@
 }
 
 @media (max-width:420px){
-  .abrir-carta__sello{
-    width:82px!important;
-    height:82px!important;
+  .abrir-carta{
+    width:min(86vw,304px)!important;
   }
-  .abrir-carta::after{
+  .abrir-carta__sobre{
+    left:6%!important;
+    right:6%!important;
+  }
+  .abrir-carta__sello{
     width:84px!important;
     height:84px!important;
+  }
+  .abrir-carta::after{
+    width:86px!important;
+    height:86px!important;
+  }
+  .hoja{
+    width:min(calc(100vw - 18px),var(--ancho))!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
   }
 }
