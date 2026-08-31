@@ -30,7 +30,7 @@ const DATOS = {
 
   /* Numero con codigo de pais. Colombia: 57 */
   whatsapp: "573157888301",
-  whatsappMensaje: "Hola, soy {nombre} y confirmo mi asistencia a la boda de Mateo y Carol.",
+  whatsappMensaje: "Hola, Mateo y Carol. Soy {nombre} y confirmo con mucha alegría mi asistencia a su boda. Muchas gracias por la invitación; será un gusto acompañarlos en este día tan especial.",
 
   fraseIntro: "Tenemos el honor de invitarte a celebrar el inicio de nuestra vida juntos. Tu presencia hará parte de un día que guardaremos para siempre.",
   fraseConfirmar: "Agradecemos confirmar tu asistencia para preparar cada detalle con mucho cariño.",
