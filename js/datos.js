@@ -75,7 +75,7 @@ const DATOS = {
 
   const cssAjustes = document.createElement("link");
   cssAjustes.rel = "stylesheet";
-  cssAjustes.href = "css/ajustes-nombres-foto.css?v=2";
+  cssAjustes.href = "css/ajustes-nombres-foto.css?v=3";
   document.head.appendChild(cssAjustes);
 
   const scriptCarrusel = document.createElement("script");
