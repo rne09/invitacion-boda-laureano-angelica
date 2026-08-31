@@ -6,57 +6,68 @@
   display:none!important;
 }
 
-/* Nombres de la portada: mas compactos y entrelazados visualmente. */
+/* ========================= PORTADA: CAROL & MATEO ========================= */
 .portada__nombres{
+  position:relative!important;
+  top:24px!important;
   display:flex!important;
   flex-direction:column!important;
   align-items:center!important;
   justify-content:center!important;
   gap:0!important;
-  line-height:.80!important;
-  margin-bottom:16px!important;
+  line-height:.74!important;
+  margin:auto 0 40px!important;
+  text-align:center!important;
+  text-shadow:
+    0 3px 13px rgba(0,0,0,.60),
+    0 1px 4px rgba(0,0,0,.78),
+    0 0 1px rgba(0,0,0,.72)!important;
 }
-.portada__nombres > span:first-child{
-  display:block;
-  transform:translateX(18px);
+.portada__nombres .nombre-carol{
+  display:block!important;
+  transform:translateX(-9px)!important;
+  margin:0!important;
 }
-.portada__nombres > .amp{
-  display:block;
-  margin:-2px 0 -1px!important;
-  line-height:.86!important;
+.portada__nombres .amp-ajustado{
+  display:block!important;
+  margin:-5px 0 -4px!important;
+  line-height:.72!important;
+  color:#f0d6a3!important;
 }
-.portada__nombres > span:last-child{
-  display:block;
-  transform:translateX(-18px);
-  margin-top:-2px;
+.portada__nombres .nombre-mateo{
+  display:block!important;
+  transform:translateX(9px)!important;
+  margin:0!important;
 }
 
-/* Nombres de la carta: misma logica, un poco mas contenida. */
+/* ========================= INTERIOR: CAROL & MATEO ========================= */
 .nombres-interior{
   display:flex!important;
   flex-direction:column!important;
   align-items:center!important;
   justify-content:center!important;
   gap:0!important;
-  line-height:.84!important;
+  line-height:.79!important;
   margin:5px 0 18px!important;
+  text-align:center!important;
 }
-.nombres-interior > span:first-child{
-  display:block;
-  transform:translateX(14px);
+.nombres-interior .nombre-carol{
+  display:block!important;
+  transform:translateX(-7px)!important;
+  margin:0!important;
 }
-.nombres-interior > span:nth-child(2){
-  display:block;
-  margin:-1px 0 0!important;
-  line-height:.82!important;
+.nombres-interior .amp-ajustado{
+  display:block!important;
+  margin:-3px 0 -3px!important;
+  line-height:.76!important;
 }
-.nombres-interior > span:last-child{
-  display:block;
-  transform:translateX(-14px);
-  margin-top:-2px;
+.nombres-interior .nombre-mateo{
+  display:block!important;
+  transform:translateX(7px)!important;
+  margin:0!important;
 }
 
-/* Foto que ahora aparece DESPUES del primer separador floral. */
+/* Foto que aparece DESPUES del primer separador floral. */
 .foto-despues-separador{
   position:relative;
   z-index:1;
@@ -81,10 +92,15 @@
 }
 
 @media (max-width:420px){
-  .portada__nombres > span:first-child{transform:translateX(13px)}
-  .portada__nombres > span:last-child{transform:translateX(-13px)}
-  .nombres-interior > span:first-child{transform:translateX(10px)}
-  .nombres-interior > span:last-child{transform:translateX(-10px)}
+  .portada__nombres{
+    top:28px!important;
+    margin-bottom:44px!important;
+    line-height:.72!important;
+  }
+  .portada__nombres .nombre-carol{transform:translateX(-7px)!important}
+  .portada__nombres .nombre-mateo{transform:translateX(7px)!important}
+  .nombres-interior .nombre-carol{transform:translateX(-5px)!important}
+  .nombres-interior .nombre-mateo{transform:translateX(5px)!important}
   .foto-despues-separador{
     width:96%;
     margin:17px auto 30px;
